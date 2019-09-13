@@ -38,6 +38,10 @@ module.exports = {
 
         await findCliente.remove();
 
-        return res.json({"response": "Client deleted with success!"});
+        return res.json({"response": "Cliente Excluído com sucesso"});
+    },
+
+    async getCliente(req, res) {
+        return res.json(await Cliente.findById(req.params.id));
     }
 };

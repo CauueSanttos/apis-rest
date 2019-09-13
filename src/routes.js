@@ -1,5 +1,7 @@
 const { Router } = require('express');
+
 const ClienteController = require('./controllers/ClienteController');
+const VeiculoController = require('./controllers/VeiculoController');
 
 /**
  * Classe responsável por criar as rotas da aplicação
@@ -12,26 +14,30 @@ class Routes {
     constructor() {
         this.routes = new Router();
 
-        this.get();
-        this.post();
-        this.put();
-        this.delete();
+        this.loadRotasClientes();
+        this.loadRotasVeiculos();
     }
 
-    get() {
+    loadRotasClientes() {
         this.routes.get('/clientes', ClienteController.index);
-    }
-
-    post() {
+        this.routes.get('/cliente/:id', ClienteController.getCliente);
+        
         this.routes.post('/cliente', ClienteController.store);
-    }
 
-    put() {
         this.routes.put('/cliente/:id', ClienteController.update);
+        
+        this.routes.delete('/cliente/:id', ClienteController.delete);
     }
 
-    delete() {
-        this.routes.delete('/cliente/:id', ClienteController.delete);
+    loadRotasVeiculos() {
+        this.routes.get('/veiculos', VeiculoController.all);
+        this.routes.get('/veiculo/:id', VeiculoController.getVeiculo);
+
+        this.routes.post('/veiculo', VeiculoController.insert);
+
+        this.routes.put('/veiculo/:id', VeiculoController.update);
+
+        this.routes.delete('/veiculo/:id', VeiculoController.delete);
     }
 }
 
