@@ -42,6 +42,8 @@ Exemplos de Api's Rest com NodeJS
   - Necessário mandar na url o ID gerado no banco.
   - Terá um retorno que o cliente foi excluído.
   
+  ____________________________________________________________________________
+  
   - API Veículos
   
   * GET - http://localhost:3333/veiculos
